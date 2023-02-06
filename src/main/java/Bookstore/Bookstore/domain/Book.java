@@ -20,7 +20,6 @@ public class Book {
 	private double price;
 
 	public Book() {
-		super();
 	}
 
 	public Book(String title, String author, String isbn, int publicationYear, double price, int ranking) {
@@ -31,6 +30,14 @@ public class Book {
 		this.publicationYear = publicationYear;
 		this.price = price;
 		this.ranking = ranking;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -79,6 +86,12 @@ public class Book {
 
 	public void setRanking(int ranking) {
 		this.ranking = ranking;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publicationYear="
+				+ publicationYear + ", ranking=" + ranking + ", price=" + price + "]";
 	}
 
 }

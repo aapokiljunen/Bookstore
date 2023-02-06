@@ -18,7 +18,11 @@
 			<td th:text="${book.author}"></td>
 			<td th:text="${book.publicationYear}"></td>
 			<td th:text="${book.price}"></td>
+			<td><a th:href="@{/edit/{id}(id=${book.id})}">Muokkaa</a></td>
+			<td><a th:href="@{/deletebook/{id}(id=${book.id})}">Poista</a></td>
+			
 		</tr>
 	</table>
+	<a href="/addbook">Lisää uusi kirja</a>
 </body>
 </html>
