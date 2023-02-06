@@ -8,24 +8,29 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Book {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String title, author, isbn;
-	@Column(name="publication_year")
+	@Column(name = "publication_year")
 	private int publicationYear;
-	private int price;
+	private int ranking;
+	private double price;
 
+	public Book() {
+		super();
+	}
 
-	public Book(String title, String author, String isbn, int publicationYear, int price) {
+	public Book(String title, String author, String isbn, int publicationYear, double price, int ranking) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		this.publicationYear = publicationYear;
 		this.price = price;
+		this.ranking = ranking;
 	}
 
 	public String getTitle() {
@@ -60,12 +65,20 @@ public class Book {
 		this.publicationYear = publicationYear;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}
 
 }
