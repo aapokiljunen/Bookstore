@@ -2,9 +2,12 @@ package Bookstore.Bookstore.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -19,17 +22,49 @@ public class Book {
 	private int ranking;
 	private double price;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "categoryid")
+	private Category category;
+
 	public Book() {
 	}
+	
+	
 
-	public Book(String title, String author, String isbn, int publicationYear, double price, int ranking) {
+	public Book(Long id, String title, String author, String isbn, int publicationYear, int ranking, double price,
+			Category category) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
 		this.publicationYear = publicationYear;
-		this.price = price;
 		this.ranking = ranking;
+		this.price = price;
+		this.category = category;
+	}
+
+
+
+	public Book(String title, String author, String isbn, int publicationYear, int ranking, double price,
+			Category category) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.publicationYear = publicationYear;
+		this.ranking = ranking;
+		this.price = price;
+		this.category = category;
+	}
+	
+	public Book(String title, String author, String isbn, int publicationYear, int ranking, double price) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.publicationYear = publicationYear;
+		this.ranking = ranking;
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -88,10 +123,18 @@ public class Book {
 		this.ranking = ranking;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publicationYear="
-				+ publicationYear + ", ranking=" + ranking + ", price=" + price + "]";
+				+ publicationYear + ", ranking=" + ranking + ", price=" + price + ", category=" + category + "]";
 	}
 
 }

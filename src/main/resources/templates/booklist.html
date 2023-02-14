@@ -13,6 +13,7 @@
 			<th>Kirjailija</th>
 			<th>Vuosi</th>
 			<th>Hinta</th>
+			<th>Kategoria</th>
 			<th>Muokkaa</th>
 			<th>Poista</th>
 		</tr>
@@ -21,6 +22,7 @@
 			<td th:text="${book.author}"></td>
 			<td th:text="${book.publicationYear}"></td>
 			<td th:text="${book.price}"></td>
+			<td th:text="${book.category.name}"></td>
 			<td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-success">Muokkaa</a></td>
 			<td><a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Poista</a></td>
 			
